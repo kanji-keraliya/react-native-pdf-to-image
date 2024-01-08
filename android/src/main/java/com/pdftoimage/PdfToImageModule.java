@@ -137,7 +137,7 @@ public class PdfToImageModule extends ReactContextBaseJavaModule {
       }
 
       @ReactMethod
-      public void convert(String pdfUriString, Promise promise) {
+      public void convert(String pdfUriString, int dpi, Promise promise) {
           try {
               WritableMap map = Arguments.createMap();
               WritableArray files = Arguments.createArray();
@@ -152,7 +152,7 @@ public class PdfToImageModule extends ReactContextBaseJavaModule {
               for (int i = 0; i < pageCount; i++) {
                   PdfRenderer.Page page = renderer.openPage(i);
 
-                  Bitmap bitmap = Bitmap.createBitmap(300*page.getWidth()/72, 300 * page.getHeight() / 72, Bitmap.Config.ARGB_8888);
+                  Bitmap bitmap = Bitmap.createBitmap(dpi * page.getWidth() / 72, dpi * page.getHeight() / 72, Bitmap.Config.ARGB_8888);
                   Canvas canvas = new Canvas(bitmap);
                   canvas.drawColor(Color.WHITE);
 

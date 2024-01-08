@@ -12,7 +12,7 @@ npm install react-native-pdf-to-image
 import { convert, convertB64 } from 'react-native-pdf-to-image';
 
 const uri = 'file:///data/.........' // Any PDF file uri
-const images = await convert(uri);   // { outputFiles: [' /* image file path in cache */'] }
+const images = await convert(uri, 300);   // { outputFiles: [' /* image file path in cache */'] }
 ```
 
 ## Contributing
