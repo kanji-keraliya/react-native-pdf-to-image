@@ -152,11 +152,11 @@ public class PdfToImageModule extends ReactContextBaseJavaModule {
               for (int i = 0; i < pageCount; i++) {
                   PdfRenderer.Page page = renderer.openPage(i);
 
-                  Bitmap bitmap = Bitmap.createBitmap(page.getWidth(), page.getHeight(), Bitmap.Config.ARGB_8888);
+                  Bitmap bitmap = Bitmap.createBitmap(300*page.getWidth()/72, 300 * page.getHeight() / 72, Bitmap.Config.ARGB_8888);
                   Canvas canvas = new Canvas(bitmap);
                   canvas.drawColor(Color.WHITE);
 
-                  page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY);
+                  page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_PRINT);
                   File output = this.saveImage(bitmap, this.context.getCacheDir());
                   page.close();
 
